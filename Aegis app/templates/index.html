@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEGIS - Phishing Detection System</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome via CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom CSS Variables and Base Styles */
+        :root {
+            --primary: #3b82f6; /* blue-500 */
+            --primary-dark: #2563eb; /* blue-600 */
+            --secondary: #10b981; /* emerald-500 */
+            --dark: #1e293b; /* slate-800 */
+            --light: #f8fafc; /* slate-50 */
+            --danger: #ef4444; /* red-500 */
+            --warning: #f59e0b; /* amber-500 */
+            --success: #22c55e; /* green-500 */
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f1f5f9; /* slate-100 */
+            /* Add padding to body equal to navbar height */
+            /* padding-top: 5rem; /* Adjust if navbar height changes */ */
+            /* It's better to add padding to the first main content block after the fixed navbar */
+        }
+
+        .logo-font {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+         /* Tailwind color mapping */
+        .text-status-red { color: var(--danger); }
+        .text-status-yellow { color: var(--warning); }
+        .text-status-green { color: var(--success); }
+        .bg-status-red { background-color: #fee2e2; } /* red-100 */
+        .bg-status-yellow { background-color: #fef3c7; } /* amber-100 */
+        .bg-status-green { background-color: #dcfce7; } /* green-100 */
+        .border-status-red { border-color: var(--danger); }
+        .border-status-yellow { border-color: var(--warning); }
+        .border-status-green { border-color: var(--success); }
+        .badge-status-red { background-color: var(--danger); }
+        .badge-status-yellow { background-color: var(--warning); }
+        .badge-status-green { background-color: var(--success); }
+
+
+        .url-input-group { display: flex; border-radius: 0.375rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+        .url-input-icon { position: absolute; top: 0; bottom: 0; left: 0; padding-left: 0.75rem; display: flex; align-items: center; pointer-events: none; }
+        .url-input { display: block; width: 100%; border-top-left-radius: 0.375rem; border-bottom-left-radius: 0.375rem; padding-left: 2.5rem; padding-top: 1rem; padding-bottom: 1rem; border: 1px solid #d1d5db; /* gray-300 */ }
+        .url-input:focus { outline: 2px solid transparent; outline-offset: 2px; ring: 2px; ring-offset: 2px; border-color: var(--primary); ring-color: var(--primary); }
+        .analyze-button { margin-left: -1px; position: relative; display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 1.5rem; border: 1px solid transparent; font-size: 0.875rem; font-weight: 500; border-top-right-radius: 0.375rem; border-bottom-right-radius: 0.375rem; color: white; background-color: var(--primary); }
+        .analyze-button:hover { background-color: var(--primary-dark); }
+
+         .result-card { margin-top: 2rem; background-color: white; border-radius: 0.75rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); overflow: hidden; }
+         .result-header { padding: 1rem 1.5rem; display: flex; align-items: center; }
+         .result-header-text { margin-left: 0.75rem; }
+         .result-url { word-break: break-all; color: #4b5563; /* gray-600 */ font-size: 0.875rem; }
+         .result-details { border-top: 1px solid #e5e7eb; /* gray-200 */ padding: 1rem 1.5rem; background-color: #f9fafb; /* gray-50 */ }
+         .metric-list li { padding-top: 0.5rem; padding-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; }
+         .metric-name { color: #374151; /* gray-700 */ }
+         .metric-value { font-weight: 500; color: #111827; /* gray-900 */}
+         .precaution-list li { margin-bottom: 0.5rem; font-size: 0.875rem; }
+
+         /* Additional styling for features/stats sections if you keep them */
+         .feature-card { transition: all 0.3s ease; border-left: 4px solid var(--primary); }
+         .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+    </style>
+</head>
+<body class="bg-slate-100">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Increase navbar height: change h-16 to h-20 -->
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <!-- Increase icon size: change text-2xl to text-3xl -->
+                        <!-- Adjust right margin: change mr-2 to mr-3 -->
+                        <i class="fas fa-shield-halved text-blue-500 text-3xl mr-3"></i>
+                        <!-- Increase logo text size: change text-xl to text-2xl -->
+                        <span class="logo-font text-2xl font-bold text-gray-900">AEGIS</span>
+                        <!-- Optionally increase version size: change text-xs to text-sm -->
+                        <span class="ml-1 text-sm text-gray-500">v1.0</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <!-- Adjust alignment if needed due to taller navbar, likely fine -->
+                        <a href="#" class="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                        <!-- <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">How It Works</a> -->
+                    </div>
+                </div>
+                 <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                     <!-- <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">API Access</button> -->
+                 </div>
+                <!-- Mobile menu button (optional) -->
+            </div>
+        </div>
+    </nav>
+
+     <!-- Hero Section -->
+     <!-- Adjust top padding to match navbar height: change pt-16 to pt-20 -->
+     <div class="gradient-bg text-white pt-20">
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="logo-font text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+                    Autonomous Evolving Guardian for Intelligent Security
+                </h1>
+                <p class="mt-6 max-w-lg mx-auto text-xl text-blue-100">
+                    AI-powered phishing detection analyzing URL characteristics
+                </p>
+                <div class="mt-10 flex justify-center">
+                    <div class="rounded-md shadow">
+                        <a href="#scan" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10 transition duration-300">
+                            Scan a URL Now <i class="fas fa-arrow-down ml-2 animate-bounce"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scanner Section -->
+    <div id="scan" class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+            <div class="p-6 sm:p-10">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-2">Phishing URL Scanner</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">Enter a suspicious URL below to analyze it with our detection model</p>
+                </div>
+
+                <div class="mt-8">
+                     <!-- Flask Form -->
+                    <form method="post">
+                        <label for="url-input" class="sr-only">URL Input</label>
+                        <div class="url-input-group">
+                            <div class="url-input-icon">
+                                <i class="fas fa-link text-gray-400"></i>
+                            </div>
+                            <input type="url" id="url-input" name="url" class="url-input" placeholder="https://example.com" required value="{{ url_input }}">
+                            <button type="submit" class="analyze-button">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Analyze</span>
+                            </button>
+                        </div>
+                    </form>
+
+                    {% if error %}
+                        <div class="mt-4 p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 rounded-md" role="alert">
+                            <p><i class="fas fa-exclamation-triangle mr-2"></i>{{ error }}</p>
+                        </div>
+                    {% endif %}
+
+                     <!-- Results Container -->
+                    {% if results %}
+                    <div class="result-card">
+                         <!-- ... (rest of the results display remains the same) ... -->
+                         <div class="result-header bg-status-{{ results.status_color }} border-l-4 border-status-{{ results.status_color }}">
+                            <i class="fas {{ results.status_icon }} text-status-{{ results.status_color }} text-3xl"></i>
+                            <div class="result-header-text">
+                                <h3 class="text-xl font-bold text-gray-900">{{ results.prediction }}</h3>
+                                <p class="result-url">{{ results.url }}</p>
+                            </div>
+                        </div>
+                        <div class="result-details">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <h4 class="font-medium text-gray-500 text-sm uppercase tracking-wider">Phishing Score</h4>
+                                    <p class="text-2xl font-bold text-gray-900">{{ results.score }}</p>
+                                    <p class="text-xs text-gray-500">(Higher score indicates higher phishing likelihood)</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-500 text-sm uppercase tracking-wider">Assessed Risk</h4>
+                                    <span class="inline-block px-3 py-1 rounded-full text-sm font-semibold text-white badge-status-{{ results.status_color }}">{{ results.risk_level }}</span>
+                                </div>
+                            </div>
+                            <hr class="my-4">
+                            <h4 class="font-medium text-gray-900 mb-2">Key Features Analyzed:</h4>
+                            <ul class="metric-list space-y-1">
+                                {% for key, value in results.metrics.items() %}
+                                <li>
+                                    <span class="metric-name text-gray-600">{{ key }}</span>
+                                    <span class="metric-value">{{ value }}</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            <hr class="my-4">
+                             <h4 class="font-medium text-gray-900 mb-2">Recommendations:</h4>
+                                {% if results.prediction == "Phishing" %}
+                                <div class="p-4 bg-red-50 border border-red-200 rounded-md text-red-800 precaution-list" role="alert">
+                                    <ul>
+                                        <li><i class="fas fa-ban mr-2"></i><strong>Do not visit</strong> this URL or provide any information.</li>
+                                        <li><i class="fas fa-ban mr-2"></i>Avoid clicking links or downloading files from this page.</li>
+                                        <li><i class="fas fa-user-shield mr-2"></i>Never enter login credentials or personal data.</li>
+                                        <li><i class="fas fa-flag mr-2"></i>Consider reporting this URL to anti-phishing services.</li>
+                                    </ul>
+                                </div>
+                                {% else %}
+                                 <div class="p-4 bg-green-50 border border-green-200 rounded-md text-green-800 precaution-list" role="alert">
+                                     <ul>
+                                        <li><i class="fas fa-check mr-2"></i>Classified as likely legitimate based on analyzed features.</li>
+                                        <li><i class="fas fa-eye mr-2"></i>Always verify domain names carefully for misspellings.</li>
+                                        <li><i class="fas fa-lock mr-2"></i>Ensure HTTPS is present for sensitive transactions.</li>
+                                        <li><i class="fas fa-question-circle mr-2"></i>Be cautious if asked for unexpected personal information.</li>
+                                    </ul>
+                                 </div>
+                                {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 mt-16">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+             <p class="text-center text-base text-gray-400">
+                © 2024 AEGIS Phishing Detector. For educational/demonstration purposes. Always exercise caution online.
+             </p>
+        </div>
+    </footer>
+
+</body>
+</html>
