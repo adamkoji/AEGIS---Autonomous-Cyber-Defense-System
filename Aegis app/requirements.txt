@@ -1,0 +1,10 @@
+# requirements.txt
+Flask
+torch
+pandas
+numpy
+scikit-learn
+requests
+tldextract
+# dnspython # Optional, if used
+# python-whois # Optional, if used
