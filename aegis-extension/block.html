@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Warning - AEGIS Protection</title>
+    <!-- Link to your compiled Tailwind CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- Font Awesome via CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom animations (can also be moved to main.css or a separate CSS file if preferred) */
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.05);
+            }
+        }
+        .animate-pulse-slow {
+            animation: pulse 2.5s infinite ease-in-out;
+        }
+        .glow-red {
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); /* red-500 with alpha */
+        }
+        /* Ensure body takes full height for centering, and flex properties */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex; /* For centering the content */
+            /* Tailwind classes will handle the rest of body styling like bg-gray-100 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-2xl w-full bg-white rounded-xl shadow-2xl overflow-hidden">
+        <!-- Header -->
+        <div class="bg-red-600 text-white p-5 flex items-center">
+            <div class="bg-white/25 p-3 rounded-full mr-4">
+                <i class="fas fa-shield-alt text-2xl text-white"></i>
+            </div>
+            <div>
+                <h1 class="text-xl font-bold">AEGIS PROTECTION ALERT</h1>
+                <p class="text-sm text-red-100">Security extension has blocked this page</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="p-6 md:p-8">
+            <div class="flex flex-col items-center mb-6">
+                <div class="bg-red-100 p-3 rounded-full mb-4 glow-red animate-pulse-slow">
+                    <i class="fas fa-exclamation-triangle text-red-500 text-3xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-1">Potentially Unsafe Site!</h2>
+                <p class="text-gray-600 text-center text-sm max-w-md">
+                    AEGIS has identified the following URL as potentially dangerous based on its characteristics.
+                </p>
+            </div>
+
+            <!-- URL Warning Box -->
+            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-r-md">
+                <div class="flex">
+                    <div class="flex-shrink-0 text-red-500 pt-0.5">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <div class="ml-3">
+                        <h3 class="text-xs font-semibold text-red-700 uppercase tracking-wider">Blocked URL</h3>
+                        <div class="mt-1 text-sm text-red-900 break-all" id="blockedUrlElement">
+                            <!-- URL will be inserted here by JavaScript -->
+                            Loading URL...
+                        </div>
+                        <div class="mt-1 text-xs text-red-700" id="phishingScoreElement">
+                            <!-- Score will be inserted here by JavaScript -->
+                            Loading score...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Threat Details -->
+            <div class="bg-gray-50 p-5 rounded-lg mb-6 border border-gray-200">
+                <h3 class="font-semibold text-gray-700 mb-3 flex items-center text-sm">
+                    <i class="fas fa-bug text-red-500 mr-2"></i> Potential Detected Threats
+                </h3>
+                <ul class="space-y-2 text-xs text-gray-600">
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 mt-0.5 text-red-400">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <p class="ml-2">
+                            <span class="font-medium">High Phishing Score:</span> Indicates characteristics commonly found in phishing websites.
+                        </p>
+                    </li>
+                    <li class="flex items-start" id="threat-mimic" style="display: none;"> <!-- Initially hidden -->
+                        <div class="flex-shrink-0 mt-0.5 text-red-400">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <p class="ml-2">
+                            <span class="font-medium">Possible Impersonation:</span> The site's content or URL structure may be attempting to mimic a legitimate service.
+                        </p>
+                    </li>
+                    <!-- You can add more threat types here if your backend provides that info -->
+                     <li class="flex items-start">
+                        <div class="flex-shrink-0 mt-0.5 text-gray-400">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <p class="ml-2">
+                            <span class="font-medium">Recommendation:</span> Do not enter any personal information or credentials on this page.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <button
+                    id="backButton"
+                    class="w-full flex items-center justify-center px-5 py-2.5 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all"
+                >
+                    <i class="fas fa-arrow-left mr-2"></i> Back to Safety
+                </button>
+                <button
+                    id="proceedButton"
+                    class="w-full flex items-center justify-center px-5 py-2.5 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all"
+                >
+                    <i class="fas fa-exclamation-triangle mr-2"></i> I Understand the Risks
+                </button>
+            </div>
+
+            <!-- Footer Note -->
+            <div class="mt-6 text-center text-xs text-gray-500">
+                <p>AEGIS blocked this page for your protection. Proceeding may compromise your security.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="block.js"></script>
+</body>
+</html>
