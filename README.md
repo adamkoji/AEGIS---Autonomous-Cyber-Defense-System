@@ -47,6 +47,4 @@ This implementation serves as the "Detector" component of the larger AEGIS visio
 *   Multi-Agent Reinforcement Learning for adaptive response.
 *   Federated learning for privacy-preserving threat intelligence.
 
-## Setup & Running:
 
-(You would add instructions here on how to set up the Python environment, run the Flask app, and load the browser extension).
