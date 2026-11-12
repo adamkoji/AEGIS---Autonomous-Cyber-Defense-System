@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+pydantic
+torch
+lightgbm
+scikit-learn
+pandas
+numpy
+requests
+beautifulsoup4
+tldextract
+dnspython
+python-dotenv
+google-genai
+pytest
+httpx

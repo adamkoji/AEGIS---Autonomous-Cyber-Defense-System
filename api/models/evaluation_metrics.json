@@ -1,0 +1,716 @@
+{
+  "platform": "AEGIS Cyber-Defense & Threat Intelligence Platform",
+  "version": "2.0.0",
+  "roc_auc": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1_score": 1.0,
+  "accuracy": 1.0,
+  "confusion_matrix": {
+    "tn": 300,
+    "fp": 0,
+    "fn": 0,
+    "tp": 300,
+    "matrix": [
+      [
+        300,
+        0
+      ],
+      [
+        0,
+        300
+      ]
+    ]
+  },
+  "roc_curve": [
+    {
+      "fpr": 0.0,
+      "tpr": 0.0
+    },
+    {
+      "fpr": 0.0,
+      "tpr": 0.3567
+    },
+    {
+      "fpr": 0.0,
+      "tpr": 1.0
+    },
+    {
+      "fpr": 0.7667,
+      "tpr": 1.0
+    },
+    {
+      "fpr": 1.0,
+      "tpr": 1.0
+    }
+  ],
+  "features_count": 141,
+  "dataset_summary": {
+    "primary_corpus": "Mendeley Phishing Websites Dataset (88,647 URLs, 111 Features)",
+    "calibration_corpus": "AEGIS Multi-Modal Adversarial & DOM Calibration Set (2,500 Samples, 126 Features)",
+    "total_features_engineered": 141,
+    "mendeley_lexical_network_features": 111,
+    "dom_structural_features": 18,
+    "adversarial_brand_features": 12
+  },
+  "models": {
+    "pytorch_transformer": {
+      "model_name": "PyTorch Self-Attention Transformer (111 Tabular/Network Features)",
+      "accuracy": 0.99,
+      "precision": 0.9868,
+      "recall": 0.9933,
+      "f1_score": 0.99,
+      "roc_auc": 0.9997,
+      "confusion_matrix": {
+        "tn": 296,
+        "fp": 4,
+        "fn": 2,
+        "tp": 298,
+        "matrix": [
+          [
+            296,
+            4
+          ],
+          [
+            2,
+            298
+          ]
+        ]
+      },
+      "roc_curve": [
+        {
+          "fpr": 0.0,
+          "tpr": 0.0
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.3467
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.98
+        },
+        {
+          "fpr": 0.0033,
+          "tpr": 0.98
+        },
+        {
+          "fpr": 0.0033,
+          "tpr": 0.9867
+        },
+        {
+          "fpr": 0.01,
+          "tpr": 0.9867
+        },
+        {
+          "fpr": 0.01,
+          "tpr": 0.99
+        },
+        {
+          "fpr": 0.0133,
+          "tpr": 0.99
+        },
+        {
+          "fpr": 0.0133,
+          "tpr": 0.9967
+        },
+        {
+          "fpr": 0.0533,
+          "tpr": 0.9967
+        },
+        {
+          "fpr": 0.0533,
+          "tpr": 1.0
+        },
+        {
+          "fpr": 0.74,
+          "tpr": 1.0
+        },
+        {
+          "fpr": 1.0,
+          "tpr": 1.0
+        }
+      ],
+      "architecture": "2-Layer Multi-Head Self-Attention Transformer (embed_dim=64, heads=4, ff_dim=128)",
+      "features_count": 111,
+      "mendeley_val_accuracy": 0.9472
+    },
+    "lightgbm": {
+      "model_name": "LightGBM Gradient Boosted Decision Trees (126 Lexical + DOM + Structural Features)",
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": {
+        "tn": 300,
+        "fp": 0,
+        "fn": 0,
+        "tp": 300,
+        "matrix": [
+          [
+            300,
+            0
+          ],
+          [
+            0,
+            300
+          ]
+        ]
+      },
+      "roc_curve": [
+        {
+          "fpr": 0.0,
+          "tpr": 0.0
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.0033
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.15
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.2133
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.3333
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.4167
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.4367
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.4867
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.51
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.54
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.5633
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.5933
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.63
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.6733
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.7033
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.72
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.7467
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.7633
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.7833
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.84
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.8933
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.93
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 1.0
+        },
+        {
+          "fpr": 0.0567,
+          "tpr": 1.0
+        },
+        {
+          "fpr": 1.0,
+          "tpr": 1.0
+        }
+      ],
+      "architecture": "LightGBM GBDT (n_estimators=150, lr=0.05, num_leaves=31)",
+      "features_count": 126
+    },
+    "aegis_ensemble": {
+      "model_name": "AEGIS Hybrid Calibrated Ensemble (Transformer + LightGBM + Adversarial Guardrails)",
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": {
+        "tn": 300,
+        "fp": 0,
+        "fn": 0,
+        "tp": 300,
+        "matrix": [
+          [
+            300,
+            0
+          ],
+          [
+            0,
+            300
+          ]
+        ]
+      },
+      "roc_curve": [
+        {
+          "fpr": 0.0,
+          "tpr": 0.0
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.3567
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 1.0
+        },
+        {
+          "fpr": 0.7667,
+          "tpr": 1.0
+        },
+        {
+          "fpr": 1.0,
+          "tpr": 1.0
+        }
+      ],
+      "architecture": "Calibrated Multi-Modal Ensemble + OWASP/MITRE Adversarial Guardrails",
+      "features_count": 141
+    }
+  },
+  "comparison_table": [
+    {
+      "model_name": "PyTorch Self-Attention Transformer (111 Tabular/Network Features)",
+      "accuracy": 0.99,
+      "precision": 0.9868,
+      "recall": 0.9933,
+      "f1_score": 0.99,
+      "roc_auc": 0.9997,
+      "confusion_matrix": {
+        "tn": 296,
+        "fp": 4,
+        "fn": 2,
+        "tp": 298,
+        "matrix": [
+          [
+            296,
+            4
+          ],
+          [
+            2,
+            298
+          ]
+        ]
+      },
+      "roc_curve": [
+        {
+          "fpr": 0.0,
+          "tpr": 0.0
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.3467
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.98
+        },
+        {
+          "fpr": 0.0033,
+          "tpr": 0.98
+        },
+        {
+          "fpr": 0.0033,
+          "tpr": 0.9867
+        },
+        {
+          "fpr": 0.01,
+          "tpr": 0.9867
+        },
+        {
+          "fpr": 0.01,
+          "tpr": 0.99
+        },
+        {
+          "fpr": 0.0133,
+          "tpr": 0.99
+        },
+        {
+          "fpr": 0.0133,
+          "tpr": 0.9967
+        },
+        {
+          "fpr": 0.0533,
+          "tpr": 0.9967
+        },
+        {
+          "fpr": 0.0533,
+          "tpr": 1.0
+        },
+        {
+          "fpr": 0.74,
+          "tpr": 1.0
+        },
+        {
+          "fpr": 1.0,
+          "tpr": 1.0
+        }
+      ],
+      "architecture": "2-Layer Multi-Head Self-Attention Transformer (embed_dim=64, heads=4, ff_dim=128)",
+      "features_count": 111,
+      "mendeley_val_accuracy": 0.9472
+    },
+    {
+      "model_name": "LightGBM Gradient Boosted Decision Trees (126 Lexical + DOM + Structural Features)",
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": {
+        "tn": 300,
+        "fp": 0,
+        "fn": 0,
+        "tp": 300,
+        "matrix": [
+          [
+            300,
+            0
+          ],
+          [
+            0,
+            300
+          ]
+        ]
+      },
+      "roc_curve": [
+        {
+          "fpr": 0.0,
+          "tpr": 0.0
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.0033
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.15
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.2133
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.3333
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.4167
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.4367
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.4867
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.51
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.54
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.5633
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.5933
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.63
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.6733
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.7033
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.72
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.7467
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.7633
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.7833
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.84
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.8933
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.93
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 1.0
+        },
+        {
+          "fpr": 0.0567,
+          "tpr": 1.0
+        },
+        {
+          "fpr": 1.0,
+          "tpr": 1.0
+        }
+      ],
+      "architecture": "LightGBM GBDT (n_estimators=150, lr=0.05, num_leaves=31)",
+      "features_count": 126
+    },
+    {
+      "model_name": "AEGIS Hybrid Calibrated Ensemble (Transformer + LightGBM + Adversarial Guardrails)",
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
+      "confusion_matrix": {
+        "tn": 300,
+        "fp": 0,
+        "fn": 0,
+        "tp": 300,
+        "matrix": [
+          [
+            300,
+            0
+          ],
+          [
+            0,
+            300
+          ]
+        ]
+      },
+      "roc_curve": [
+        {
+          "fpr": 0.0,
+          "tpr": 0.0
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 0.3567
+        },
+        {
+          "fpr": 0.0,
+          "tpr": 1.0
+        },
+        {
+          "fpr": 0.7667,
+          "tpr": 1.0
+        },
+        {
+          "fpr": 1.0,
+          "tpr": 1.0
+        }
+      ],
+      "architecture": "Calibrated Multi-Modal Ensemble + OWASP/MITRE Adversarial Guardrails",
+      "features_count": 141
+    }
+  ],
+  "top_feature_importances": [
+    {
+      "rank": 1,
+      "feature": "domain_entropy",
+      "importance_splits": 839,
+      "importance_pct": 18.85,
+      "category": "Adversarial & Brand Guard"
+    },
+    {
+      "rank": 2,
+      "feature": "url_entropy",
+      "importance_splits": 736,
+      "importance_pct": 16.54,
+      "category": "Adversarial & Brand Guard"
+    },
+    {
+      "rank": 3,
+      "feature": "length_url",
+      "importance_splits": 498,
+      "importance_pct": 11.19,
+      "category": "Lexical URL Structure"
+    },
+    {
+      "rank": 4,
+      "feature": "qty_hyphen_domain",
+      "importance_splits": 275,
+      "importance_pct": 6.18,
+      "category": "Lexical URL Structure"
+    },
+    {
+      "rank": 5,
+      "feature": "domain_length",
+      "importance_splits": 256,
+      "importance_pct": 5.75,
+      "category": "Lexical URL Structure"
+    },
+    {
+      "rank": 6,
+      "feature": "directory_length",
+      "importance_splits": 253,
+      "importance_pct": 5.68,
+      "category": "Lexical URL Structure"
+    },
+    {
+      "rank": 7,
+      "feature": "brand_typosquat_score",
+      "importance_splits": 213,
+      "importance_pct": 4.79,
+      "category": "Adversarial & Brand Guard"
+    },
+    {
+      "rank": 8,
+      "feature": "qty_dot_url",
+      "importance_splits": 185,
+      "importance_pct": 4.16,
+      "category": "Lexical URL Structure"
+    },
+    {
+      "rank": 9,
+      "feature": "suspicious_keyword_count",
+      "importance_splits": 156,
+      "importance_pct": 3.5,
+      "category": "Adversarial & Brand Guard"
+    },
+    {
+      "rank": 10,
+      "feature": "qty_dot_domain",
+      "importance_splits": 144,
+      "importance_pct": 3.24,
+      "category": "Lexical URL Structure"
+    },
+    {
+      "rank": 11,
+      "feature": "file_length",
+      "importance_splits": 142,
+      "importance_pct": 3.19,
+      "category": "Lexical URL Structure"
+    },
+    {
+      "rank": 12,
+      "feature": "qty_hyphen_url",
+      "importance_splits": 116,
+      "importance_pct": 2.61,
+      "category": "Lexical URL Structure"
+    },
+    {
+      "rank": 13,
+      "feature": "qty_underline_url",
+      "importance_splits": 116,
+      "importance_pct": 2.61,
+      "category": "Lexical URL Structure"
+    },
+    {
+      "rank": 14,
+      "feature": "qty_tld_url",
+      "importance_splits": 112,
+      "importance_pct": 2.52,
+      "category": "Lexical URL Structure"
+    },
+    {
+      "rank": 15,
+      "feature": "qty_slash_url",
+      "importance_splits": 81,
+      "importance_pct": 1.82,
+      "category": "Lexical URL Structure"
+    },
+    {
+      "rank": 16,
+      "feature": "is_punycode",
+      "importance_splits": 48,
+      "importance_pct": 1.08,
+      "category": "Adversarial & Brand Guard"
+    },
+    {
+      "rank": 17,
+      "feature": "params_length",
+      "importance_splits": 48,
+      "importance_pct": 1.08,
+      "category": "Lexical URL Structure"
+    },
+    {
+      "rank": 18,
+      "feature": "script_obfuscation_score",
+      "importance_splits": 48,
+      "importance_pct": 1.08,
+      "category": "DOM & Script Structure"
+    },
+    {
+      "rank": 19,
+      "feature": "is_official_trusted_domain",
+      "importance_splits": 28,
+      "importance_pct": 0.63,
+      "category": "Adversarial & Brand Guard"
+    },
+    {
+      "rank": 20,
+      "feature": "qty_vowels_domain",
+      "importance_splits": 28,
+      "importance_pct": 0.63,
+      "category": "Lexical URL Structure"
+    }
+  ]
+}
