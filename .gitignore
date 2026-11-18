@@ -1,6 +1,28 @@
-
+# Python Virtual Environments & Caches
 .venv/
 venv/
+ENV/
 __pycache__/
+*.py[cod]
+*$py.class
 .pytest_cache/
+
+# Node / Frontend Build & Dependencies
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+.vite/
+npm-debug.log*
+
+# Environment & Secrets
 .env
+.env.local
+frontend/.env
+frontend/.env.local
+
+# OS / IDE / Temp
+.DS_Store
+Thumbs.db
+*.log
+/tmp/
