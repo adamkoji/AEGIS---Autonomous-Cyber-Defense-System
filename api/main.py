@@ -51,6 +51,7 @@ class AdversarialSimulateRequest(BaseModel):
     base_url: Optional[str] = Field(None, description="Alias for base_url")
 
 
+@app.get("/")
 @app.get("/api/health")
 def health_check():
     return engine.get_health()
