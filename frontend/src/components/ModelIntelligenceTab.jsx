@@ -69,7 +69,7 @@ export default function ModelIntelligenceTab() {
   const modelsMap = metrics?.models || {};
 
   return (
-    <div className="w-full max-w-5xl mx-auto pt-2 pb-12 space-y-6">
+    <div className="w-full max-w-5xl mx-auto pt-2 pb-8 space-y-6">
       {/* Header Card */}
       <div className="aegis-glow-box rounded-[30px] p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -88,7 +88,7 @@ export default function ModelIntelligenceTab() {
 
         {/* 3 Clean Accuracy Cards */}
         <div className="mt-6 pt-5 border-t border-white/60 dark:border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="p-5 rounded-2xl bg-white/75 dark:bg-[#0D111E]/65 border border-white/80 dark:border-white/10">
+          <div className="p-5 rounded-2xl bg-white/75 dark:bg-[#0D111E]/65 border border-white/80 dark:border-white/10 hover:border-[#8DB9F0] hover:-translate-y-0.5 transition-all duration-200">
             <div className="text-xs font-bold text-[#5A6282] dark:text-[#8DB9F0]">
               URL Model
             </div>
@@ -100,7 +100,7 @@ export default function ModelIntelligenceTab() {
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl bg-white/75 dark:bg-[#0D111E]/65 border border-white/80 dark:border-white/10">
+          <div className="p-5 rounded-2xl bg-white/75 dark:bg-[#0D111E]/65 border border-white/80 dark:border-white/10 hover:border-[#F5B69E] hover:-translate-y-0.5 transition-all duration-200">
             <div className="text-xs font-bold text-[#5A6282] dark:text-[#F5B69E]">
               Page Model
             </div>
@@ -112,7 +112,7 @@ export default function ModelIntelligenceTab() {
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl bg-white/90 dark:bg-[#0D111E]/90 border-2 border-[#1E2238] dark:border-[#8DB9F0]">
+          <div className="p-5 rounded-2xl bg-white/90 dark:bg-[#0D111E]/90 border-2 border-[#1E2238] dark:border-[#8DB9F0] hover:-translate-y-0.5 hover:shadow-[0_10px_25px_rgba(141,185,240,0.35)] transition-all duration-200">
             <div className="text-xs font-bold text-[#1E2238] dark:text-[#8DB9F0] flex items-center gap-1.5">
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
               <span>Combined Aegis</span>
@@ -251,7 +251,7 @@ export default function ModelIntelligenceTab() {
             {TOP_6_SIGNALS.map((sig) => (
               <div
                 key={sig.name}
-                className="p-4 rounded-2xl bg-white/75 dark:bg-[#0D111E]/65 border border-white/80 dark:border-white/10"
+                className="p-4 rounded-2xl bg-white/75 dark:bg-[#0D111E]/65 border border-white/80 dark:border-white/10 hover:border-[#8DB9F0] hover:-translate-y-0.5 hover:shadow-md transition-all duration-200"
               >
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-sm font-bold text-[#1E2238] dark:text-white">

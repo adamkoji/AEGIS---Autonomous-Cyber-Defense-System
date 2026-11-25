@@ -29,6 +29,34 @@ body {
   font-family: "Cormorant Garamond", Georgia, serif;
 }
 
+/* Header Brand Logo with Subtle Refined Glow */
+.aegis-hero-logo {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  background-image: linear-gradient(135deg, #1E2238 0%, #4A85D8 45%, #E88D6D 90%);
+  background-size: 160% auto;
+  background-position: left center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 6px rgba(141, 185, 240, 0.25));
+  transition:
+    background-position 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 250ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 250ms ease;
+}
+
+.aegis-hero-logo:hover {
+  background-position: right center;
+  transform: scale(1.04);
+  filter: drop-shadow(0 3px 10px rgba(141, 185, 240, 0.38));
+}
+
+html.dark .aegis-hero-logo {
+  background-image: linear-gradient(135deg, #FFFFFF 0%, #8DB9F0 48%, #F5B69E 95%);
+  background-size: 160% auto;
+  filter: drop-shadow(0 2px 8px rgba(141, 185, 240, 0.22));
+}
+
 /* Light Mode Canvas (.lunar-oasis-canvas) */
 .lunar-oasis-canvas {
   min-height: 100vh;
@@ -58,7 +86,7 @@ html.dark .lunar-oasis-canvas {
     linear-gradient(165deg, #0D111E 0%, #12172A 54%, #151B30 100%);
 }
 
-/* Signature Prismatic Powder-Blue-to-Sunset-Peach Borders */
+/* Signature Prismatic Powder-Blue-to-Sunset-Peach Borders with Springy Hover Elevation */
 .aegis-glow-box {
   position: relative;
   border-radius: 28px;
@@ -72,9 +100,19 @@ html.dark .lunar-oasis-canvas {
     0 0 28px -4px rgba(141, 185, 240, 0.38),
     0 10px 28px -6px rgba(245, 182, 158, 0.34);
   transition:
-    background 450ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 450ms ease,
-    transform 300ms ease;
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 280ms ease,
+    background 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.aegis-glow-box:hover,
+.aegis-glow-box:focus-within {
+  transform: translateY(-4px) scale(1.005);
+  box-shadow:
+    0 22px 48px -12px rgba(141, 185, 240, 0.38),
+    0 10px 28px -8px rgba(245, 182, 158, 0.32),
+    0 0 36px -4px rgba(141, 185, 240, 0.42);
 }
 
 html.dark .aegis-glow-box {
@@ -84,6 +122,14 @@ html.dark .aegis-glow-box {
     0 24px 56px -12px rgba(5, 8, 18, 0.65),
     0 0 32px -6px rgba(141, 185, 240, 0.26),
     0 8px 26px -6px rgba(245, 182, 158, 0.22);
+}
+
+html.dark .aegis-glow-box:hover,
+html.dark .aegis-glow-box:focus-within {
+  transform: translateY(-4px) scale(1.005);
+  box-shadow:
+    0 24px 52px -10px rgba(141, 185, 240, 0.34),
+    0 12px 30px -8px rgba(245, 182, 158, 0.28);
 }
 
 .aegis-card {
@@ -98,10 +144,18 @@ html.dark .aegis-glow-box {
     0 4px 20px -4px rgba(141, 185, 240, 0.24),
     0 4px 20px -4px rgba(245, 182, 158, 0.22);
   transition:
-    background 450ms cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 350ms ease,
-    box-shadow 450ms ease,
-    transform 250ms ease;
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 280ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 280ms ease,
+    background 450ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.aegis-card:hover,
+.aegis-card:focus-within {
+  transform: translateY(-4px) scale(1.005);
+  box-shadow:
+    0 22px 48px -12px rgba(141, 185, 240, 0.38),
+    0 10px 28px -8px rgba(245, 182, 158, 0.32);
 }
 
 html.dark .aegis-card {
@@ -111,6 +165,45 @@ html.dark .aegis-card {
     0 18px 44px -10px rgba(4, 7, 16, 0.6),
     0 0 24px -6px rgba(141, 185, 240, 0.16),
     0 0 24px -6px rgba(245, 182, 158, 0.14);
+}
+
+html.dark .aegis-card:hover,
+html.dark .aegis-card:focus-within {
+  transform: translateY(-4px) scale(1.005);
+  box-shadow:
+    0 22px 48px -12px rgba(141, 185, 240, 0.32),
+    0 10px 28px -8px rgba(245, 182, 158, 0.26);
+}
+
+/* Shimmer Sweep Button Effect */
+.aegis-btn-shimmer {
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 8px 22px -4px rgba(30, 34, 56, 0.32),
+    0 0 18px -2px rgba(141, 185, 240, 0.45);
+}
+
+.aegis-btn-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 75%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.28),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 550ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.aegis-btn-shimmer:hover::after {
+  left: 140%;
 }
 
 /* Custom subtle scrollbars */

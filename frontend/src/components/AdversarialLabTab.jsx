@@ -91,7 +91,7 @@ export default function AdversarialLabTab() {
   }, []);
 
   return (
-    <div className="w-full max-w-5xl mx-auto pt-2 pb-12 space-y-6">
+    <div className="w-full max-w-5xl mx-auto pt-2 pb-8 space-y-6">
       {/* Header Card */}
       <div className="aegis-glow-box rounded-[30px] p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -111,7 +111,7 @@ export default function AdversarialLabTab() {
             type="button"
             onClick={executeSimulation}
             disabled={loading}
-            className="bg-[#1E2238] hover:bg-[#2A304D] dark:bg-[#8DB9F0] dark:text-[#0D111E] text-white rounded-full px-6 py-3 text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-md hover:scale-[1.02] transition-all shrink-0"
+            className="aegis-btn-shimmer bg-[#1E2238] hover:bg-[#2A304D] dark:bg-[#8DB9F0] dark:text-[#0D111E] text-white rounded-full px-6 py-3 text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-200 shrink-0"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
             <span>{loading ? "Running Tests..." : "Run 6 Attack Tests"}</span>
@@ -120,7 +120,7 @@ export default function AdversarialLabTab() {
 
         {/* Top Summary Row (3 Simple Cards) */}
         <div className="mt-6 pt-5 border-t border-white/60 dark:border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="p-4 rounded-2xl bg-white/75 dark:bg-[#0D111E]/65 border border-white/80 dark:border-white/10">
+          <div className="p-4 rounded-2xl bg-white/75 dark:bg-[#0D111E]/65 border border-white/80 dark:border-white/10 hover:border-[#8DB9F0] hover:-translate-y-0.5 transition-all duration-200">
             <div className="text-xs font-bold text-[#5A6282] dark:text-[#8DB9F0]">
               Basic Filter Caught
             </div>
@@ -129,7 +129,7 @@ export default function AdversarialLabTab() {
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white/75 dark:bg-[#0D111E]/65 border border-white/80 dark:border-white/10">
+          <div className="p-4 rounded-2xl bg-white/75 dark:bg-[#0D111E]/65 border border-white/80 dark:border-white/10 hover:border-[#8DB9F0] hover:-translate-y-0.5 transition-all duration-200">
             <div className="text-xs font-bold text-[#5A6282] dark:text-[#8DB9F0]">
               Aegis Caught
             </div>
@@ -138,7 +138,7 @@ export default function AdversarialLabTab() {
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white/75 dark:bg-[#0D111E]/65 border border-white/80 dark:border-white/10">
+          <div className="p-4 rounded-2xl bg-white/75 dark:bg-[#0D111E]/65 border border-white/80 dark:border-white/10 hover:border-[#F5B69E] hover:-translate-y-0.5 transition-all duration-200">
             <div className="text-xs font-bold text-[#5A6282] dark:text-[#F5B69E]">
               Protection Boost
             </div>

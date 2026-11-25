@@ -1,0 +1,9 @@
+services:
+  aegis-api:
+    build: .
+    container_name: aegis-cyber-defense-api
+    ports:
+      - "8000:7860"
+    environment:
+      - PORT=7860
+    restart: unless-stopped

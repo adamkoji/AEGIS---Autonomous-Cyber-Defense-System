@@ -276,11 +276,11 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
     : "None";
 
   return (
-    <div className="w-full max-w-5xl mx-auto flex flex-col items-center pt-2 pb-12">
+    <div className="w-full max-w-5xl mx-auto flex flex-col items-center pt-2 pb-8">
       {/* Clean Hero Section */}
       <div className="text-center max-w-2xl mx-auto mb-7 px-2">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/65 dark:bg-white/10 backdrop-blur-md border border-white/70 dark:border-white/15 mb-3 shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-[#5B96E5]" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/75 dark:bg-white/10 backdrop-blur-md border border-white/80 dark:border-white/15 mb-3 shadow-sm hover:scale-105 transition-transform duration-200">
+          <span className="w-2 h-2 rounded-full bg-[#5B96E5] animate-pulse" />
           <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#5A6282] dark:text-[#8DB9F0]">
             SMART SECURITY GUARD
           </span>
@@ -299,16 +299,16 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
 
       {/* Scanner Input Card */}
       <div className="aegis-glow-box rounded-[30px] p-4 sm:p-6 max-w-3xl w-full">
-        {/* Two Simple Mode Pills */}
+        {/* Two Simple Mode Pills with Tactile Hover Pop */}
         <div className="flex items-center justify-between mb-4">
-          <div className="inline-flex p-1 rounded-full bg-white/70 dark:bg-[#0D111E]/70 border border-white/60 dark:border-white/10">
+          <div className="inline-flex p-1 rounded-full bg-white/70 dark:bg-[#0D111E]/70 border border-white/60 dark:border-white/10 gap-1">
             <button
               type="button"
               onClick={() => setScanMode("url")}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${
+              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 active:scale-95 ${
                 scanMode === "url"
-                  ? "bg-[#1E2238] text-white dark:bg-[#8DB9F0] dark:text-[#0D111E] shadow-sm"
-                  : "text-[#5A6282] dark:text-[#E9E8F8]/70 hover:text-[#1E2238] dark:hover:text-white"
+                  ? "bg-[#1E2238] text-white dark:bg-[#8DB9F0] dark:text-[#0D111E] shadow-[0_6px_16px_rgba(141,185,240,0.4)]"
+                  : "text-[#5A6282] dark:text-[#E9E8F8]/70 hover:text-[#1E2238] dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/5"
               }`}
             >
               🌐 Check a Website Link
@@ -316,10 +316,10 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
             <button
               type="button"
               onClick={() => setScanMode("payload")}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${
+              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 active:scale-95 ${
                 scanMode === "payload"
-                  ? "bg-[#1E2238] text-white dark:bg-[#F5B69E] dark:text-[#0D111E] shadow-sm"
-                  : "text-[#5A6282] dark:text-[#E9E8F8]/70 hover:text-[#1E2238] dark:hover:text-white"
+                  ? "bg-[#1E2238] text-white dark:bg-[#F5B69E] dark:text-[#0D111E] shadow-[0_6px_16px_rgba(245,182,158,0.4)]"
+                  : "text-[#5A6282] dark:text-[#E9E8F8]/70 hover:text-[#1E2238] dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/5"
               }`}
             >
               💬 Check Text or Prompt
@@ -333,7 +333,7 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
             e.preventDefault();
             executeScan(scanMode, inputValue);
           }}
-          className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 bg-white/90 dark:bg-[#0D111E]/90 rounded-[22px] p-2 border border-white/80 dark:border-white/15 shadow-inner"
+          className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 bg-white/90 dark:bg-[#0D111E]/90 rounded-[22px] p-2 border border-white/80 dark:border-white/15 shadow-inner focus-within:border-[#8DB9F0] transition-colors duration-200"
         >
           <div className="flex items-center flex-1 pl-3 pr-2 py-1.5">
             {scanMode === "url" ? (
@@ -359,7 +359,7 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
               <button
                 type="button"
                 onClick={handleStopScan}
-                className="bg-[#F5B69E] hover:bg-[#E88D6D] text-[#1E2238] rounded-full px-4 py-2.5 text-xs sm:text-sm font-semibold flex items-center gap-1.5 shadow-sm transition-all"
+                className="bg-[#F5B69E] hover:bg-[#E88D6D] text-[#1E2238] rounded-full px-4 py-2.5 text-xs sm:text-sm font-semibold flex items-center gap-1.5 shadow-sm hover:-translate-y-0.5 active:scale-95 transition-all duration-200"
               >
                 <Square className="w-3.5 h-3.5 fill-current" />
                 <span>Stop</span>
@@ -368,16 +368,16 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
             <button
               type="submit"
               disabled={loading}
-              className="bg-[#1E2238] hover:bg-[#2A304D] dark:bg-[#8DB9F0] dark:text-[#0F1322] text-white rounded-full px-6 py-3 font-semibold text-xs sm:text-sm flex items-center justify-center gap-1.5 shadow-md hover:scale-[1.02] transition-all disabled:opacity-60"
+              className="group aegis-btn-shimmer bg-[#1E2238] hover:bg-[#2A304D] dark:bg-[#8DB9F0] dark:text-[#0F1322] text-white rounded-full px-6 py-3 font-semibold text-xs sm:text-sm flex items-center justify-center gap-1.5 hover:scale-[1.04] hover:-translate-y-0.5 active:scale-95 transition-all duration-200 disabled:opacity-60"
             >
               <span>{loading ? "Scanning..." : "Scan Now"}</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
           </div>
         </form>
 
-        {/* 4 Simple, Clean Suggestion Pills */}
-        <div className="mt-3.5 flex flex-wrap items-center gap-2">
+        {/* 4 Simple, Clean Suggestion Pills with Spring-Pop Micro-Interactions */}
+        <div className="mt-4 flex flex-wrap items-center gap-2">
           {SUGGESTION_PILLS.map((pill) => {
             const isSelected = inputValue === pill.value && scanMode === pill.mode;
             return (
@@ -385,10 +385,10 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
                 key={pill.id}
                 type="button"
                 onClick={() => handlePillClick(pill)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all border ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold border hover:-translate-y-1 hover:scale-[1.03] active:scale-95 transition-all duration-200 hover:border-[#8DB9F0] hover:shadow-[0_10px_25px_-5px_rgba(141,185,240,0.4)] ${
                   isSelected
-                    ? "bg-[#1E2238] text-white border-[#1E2238] dark:bg-[#8DB9F0] dark:text-[#0D111E] dark:border-[#8DB9F0] shadow-sm"
-                    : "bg-white/75 dark:bg-white/5 text-[#1E2238] dark:text-[#E9E8F8] border-white/80 dark:border-white/10 hover:bg-white dark:hover:bg-white/15"
+                    ? "bg-[#1E2238] text-white border-[#1E2238] dark:bg-[#8DB9F0] dark:text-[#0D111E] dark:border-[#8DB9F0] shadow-[0_6px_18px_rgba(141,185,240,0.38)]"
+                    : "bg-white/80 dark:bg-white/5 text-[#1E2238] dark:text-[#E9E8F8] border-white/80 dark:border-white/10 hover:bg-white dark:hover:bg-white/15"
                 }`}
               >
                 {pill.label}
@@ -432,7 +432,7 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
                 <div className="flex items-center justify-between gap-2 mb-5">
                   <div className="flex items-center gap-2">
                     <span
-                      className={`px-3.5 py-1 rounded-full text-xs font-bold ${
+                      className={`px-3.5 py-1 rounded-full text-xs font-bold shadow-xs ${
                         isDanger
                           ? "bg-[#E88D6D] text-white"
                           : "bg-[#8DB9F0] text-[#1E2238]"
@@ -445,7 +445,7 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
                     </span>
                   </div>
 
-                  <div className="w-9 h-9 rounded-full bg-[#1E2238] dark:bg-[#8DB9F0] text-white dark:text-[#0D111E] flex items-center justify-center shadow-sm">
+                  <div className="w-9 h-9 rounded-full bg-[#1E2238] dark:bg-[#8DB9F0] text-white dark:text-[#0D111E] flex items-center justify-center shadow-sm transition-transform duration-200 hover:scale-110">
                     <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </div>
@@ -492,7 +492,7 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
 
               {/* Bottom 3 Compact Pills: URL Check, Page Check, Brand Guard */}
               <div className="mt-5 pt-4 border-t border-white/60 dark:border-white/10 grid grid-cols-3 gap-2.5">
-                <div className="p-3 rounded-2xl bg-white/70 dark:bg-white/5 text-center">
+                <div className="p-3 rounded-2xl bg-white/75 dark:bg-white/5 text-center border border-transparent hover:border-[#8DB9F0] hover:-translate-y-0.5 transition-all duration-200">
                   <div className="text-[11px] font-semibold text-[#5A6282] dark:text-[#8DB9F0]">
                     URL Check
                   </div>
@@ -505,7 +505,7 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
                   </div>
                 </div>
 
-                <div className="p-3 rounded-2xl bg-white/70 dark:bg-white/5 text-center">
+                <div className="p-3 rounded-2xl bg-white/75 dark:bg-white/5 text-center border border-transparent hover:border-[#8DB9F0] hover:-translate-y-0.5 transition-all duration-200">
                   <div className="text-[11px] font-semibold text-[#5A6282] dark:text-[#8DB9F0]">
                     Page Check
                   </div>
@@ -518,7 +518,7 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
                   </div>
                 </div>
 
-                <div className="p-3 rounded-2xl bg-white/70 dark:bg-white/5 text-center">
+                <div className="p-3 rounded-2xl bg-white/75 dark:bg-white/5 text-center border border-transparent hover:border-[#F5B69E] hover:-translate-y-0.5 transition-all duration-200">
                   <div className="text-[11px] font-semibold text-[#5A6282] dark:text-[#F5B69E]">
                     Brand Guard
                   </div>
@@ -555,7 +555,7 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
                     return (
                       <div
                         key={`${item.title}-${idx}`}
-                        className="p-4 rounded-2xl bg-white/75 dark:bg-[#0D111E]/65 border border-white/80 dark:border-white/10 flex items-start justify-between gap-3"
+                        className="p-4 rounded-2xl bg-white/75 dark:bg-[#0D111E]/65 border border-white/80 dark:border-white/10 hover:border-[#8DB9F0] hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 flex items-start justify-between gap-3"
                       >
                         <div>
                           <div className="text-sm font-bold text-[#1E2238] dark:text-white">
@@ -579,7 +579,7 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
               {/* Compact 4-Stat Summary Row */}
               {isUrlResult && (
                 <div className="mt-5 pt-4 border-t border-white/60 dark:border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
-                  <div className="px-3 py-2 rounded-xl bg-white/60 dark:bg-white/5">
+                  <div className="px-3 py-2 rounded-xl bg-white/65 dark:bg-white/5 border border-transparent hover:border-[#8DB9F0]/60 transition-colors">
                     <span className="text-[10px] font-semibold text-[#5A6282] dark:text-[#8DB9F0] block">
                       SSL Certificate
                     </span>
@@ -587,7 +587,7 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
                       {sslValid ? "Valid (HTTPS)" : "Missing"}
                     </span>
                   </div>
-                  <div className="px-3 py-2 rounded-xl bg-white/60 dark:bg-white/5">
+                  <div className="px-3 py-2 rounded-xl bg-white/65 dark:bg-white/5 border border-transparent hover:border-[#8DB9F0]/60 transition-colors">
                     <span className="text-[10px] font-semibold text-[#5A6282] dark:text-[#8DB9F0] block">
                       Domain Length
                     </span>
@@ -595,7 +595,7 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
                       {domainLength} chars
                     </span>
                   </div>
-                  <div className="px-3 py-2 rounded-xl bg-white/60 dark:bg-white/5">
+                  <div className="px-3 py-2 rounded-xl bg-white/65 dark:bg-white/5 border border-transparent hover:border-[#8DB9F0]/60 transition-colors">
                     <span className="text-[10px] font-semibold text-[#5A6282] dark:text-[#8DB9F0] block">
                       Redirects
                     </span>
@@ -603,7 +603,7 @@ export default function ThreatScannerTab({ quickDemoTrigger }) {
                       {redirectsCount}
                     </span>
                   </div>
-                  <div className="px-3 py-2 rounded-xl bg-white/60 dark:bg-white/5">
+                  <div className="px-3 py-2 rounded-xl bg-white/65 dark:bg-white/5 border border-transparent hover:border-[#F5B69E]/60 transition-colors">
                     <span className="text-[10px] font-semibold text-[#5A6282] dark:text-[#F5B69E] block">
                       Brand Match
                     </span>

@@ -41,7 +41,7 @@ export default function BatchAndFeedTab() {
   }, []);
 
   return (
-    <div className="w-full max-w-5xl mx-auto pt-2 pb-12 space-y-6">
+    <div className="w-full max-w-5xl mx-auto pt-2 pb-8 space-y-6">
       {/* Bulk Scan Input Card */}
       <div className="aegis-glow-box rounded-[30px] p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
@@ -65,7 +65,7 @@ export default function BatchAndFeedTab() {
                 setBatchText(text);
                 handleRunBatch(text);
               }}
-              className="px-4 py-2.5 rounded-full bg-white/85 dark:bg-white/10 text-xs font-bold text-[#1E2238] dark:text-white border border-white/80 dark:border-white/15 hover:scale-[1.02] transition-all"
+              className="px-4 py-2.5 rounded-full bg-white/85 dark:bg-white/10 text-xs font-bold text-[#1E2238] dark:text-white border border-white/80 dark:border-white/15 hover:border-[#8DB9F0] hover:-translate-y-0.5 hover:scale-[1.03] active:scale-95 transition-all duration-200"
             >
               Load Sample Links
             </button>
@@ -74,7 +74,7 @@ export default function BatchAndFeedTab() {
               type="button"
               onClick={() => handleRunBatch()}
               disabled={scanning}
-              className="bg-[#1E2238] hover:bg-[#2A304D] dark:bg-[#8DB9F0] dark:text-[#0D111E] text-white rounded-full px-6 py-2.5 text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-md hover:scale-[1.02] transition-all"
+              className="aegis-btn-shimmer bg-[#1E2238] hover:bg-[#2A304D] dark:bg-[#8DB9F0] dark:text-[#0D111E] text-white rounded-full px-6 py-2.5 text-xs sm:text-sm font-semibold flex items-center gap-2 hover:scale-105 hover:-translate-y-0.5 active:scale-95 transition-all duration-200"
             >
               <Sparkles className="w-4 h-4" />
               <span>{scanning ? "Scanning..." : "Scan All"}</span>
@@ -87,7 +87,7 @@ export default function BatchAndFeedTab() {
           value={batchText}
           onChange={(e) => setBatchText(e.target.value)}
           placeholder="Paste links here (one per line)..."
-          className="w-full rounded-2xl bg-white/85 dark:bg-[#0D111E]/85 p-4 text-xs sm:text-sm font-mono text-[#1E2238] dark:text-white border border-white/80 dark:border-white/15 focus:outline-none"
+          className="w-full rounded-2xl bg-white/85 dark:bg-[#0D111E]/85 p-4 text-xs sm:text-sm font-mono text-[#1E2238] dark:text-white border border-white/80 dark:border-white/15 focus:outline-none focus:border-[#8DB9F0] transition-colors"
         />
       </div>
 
@@ -115,7 +115,7 @@ export default function BatchAndFeedTab() {
               return (
                 <div
                   key={`${item.url}-${idx}`}
-                  className="p-3.5 rounded-2xl bg-white/75 dark:bg-[#0D111E]/65 border border-white/80 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                  className="p-3.5 rounded-2xl bg-white/75 dark:bg-[#0D111E]/65 border border-white/80 dark:border-white/10 hover:border-[#8DB9F0] hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                 >
                   <div className="text-xs sm:text-sm font-mono truncate text-[#1E2238] dark:text-white max-w-xl">
                     {item.url}

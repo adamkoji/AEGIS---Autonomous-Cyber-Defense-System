@@ -232,15 +232,21 @@ def train_and_save_lightgbm(force_retrain: bool = False) -> dict:
     )
     lgbm.fit(X_train, y_train)
 
-    with open(LGBM_MODEL_PATH, "wb") as f:
-        pickle.dump(
-            {
-                "model": lgbm,
-                "feature_order": LIGHTGBM_FEATURE_ORDER,
-                "version": "2.0.0-calibrated",
-            },
-            f,
-        )
+    bundle_data = {
+        "model": lgbm,
+        "feature_order": LIGHTGBM_FEATURE_ORDER,
+        "version": "2.0.0-calibrated",
+    }
+    try:
+        os.makedirs(MODELS_DIR, exist_ok=True)
+        with open(LGBM_MODEL_PATH, "wb") as f:
+            pickle.dump(bundle_data, f)
+    except Exception:
+        import tempfile
+        tmp_dir = os.path.join(tempfile.gettempdir(), "aegis_models")
+        os.makedirs(tmp_dir, exist_ok=True)
+        with open(os.path.join(tmp_dir, "lightgbm_threat_model.pkl"), "wb") as f:
+            pickle.dump(bundle_data, f)
 
     # Evaluate LightGBM on held-out test set
     lgbm_probs = lgbm.predict_proba(X_test)[:, 1]
@@ -396,8 +402,15 @@ def train_and_save_lightgbm(force_retrain: bool = False) -> dict:
         "top_feature_importances": top_20_features,
     }
 
-    with open(METRICS_JSON_PATH, "w", encoding="utf-8") as f:
-        json.dump(metrics_payload, f, indent=2)
+    try:
+        with open(METRICS_JSON_PATH, "w", encoding="utf-8") as f:
+            json.dump(metrics_payload, f, indent=2)
+    except Exception:
+        import tempfile
+        tmp_dir = os.path.join(tempfile.gettempdir(), "aegis_models")
+        os.makedirs(tmp_dir, exist_ok=True)
+        with open(os.path.join(tmp_dir, "evaluation_metrics.json"), "w", encoding="utf-8") as f:
+            json.dump(metrics_payload, f, indent=2)
 
     return metrics_payload
 
