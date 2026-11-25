@@ -40,7 +40,7 @@ TMP_MODELS_DIR = os.path.join(tempfile.gettempdir(), "aegis_models")
 
 PT_MODEL_PATH = os.path.join(MODELS_DIR, "phishing_transformer_best.pt")
 SCALER_PATH = os.path.join(MODELS_DIR, "tabular_scaler.pkl")
-DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+DEVICE = torch.device("cpu")
 
 
 def _resolve_existing_file(filename: str) -> str | None:
@@ -103,19 +103,21 @@ class AegisModelEngine:
             num_classes=1,
         ).to(DEVICE)
 
-        # Quick 15-step calibration pass so self-initialized weights separate phishing vs legitimate
-        optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+        # Quick 12-step manual SGD calibration pass (avoids torch.optim CUDA health check on ZeroGPU)
         criterion = torch.nn.BCELoss()
         x_tensor = torch.tensor(X_scaled, dtype=torch.float32, device=DEVICE)
         y_tensor = torch.tensor(y.reshape(-1, 1), dtype=torch.float32, device=DEVICE)
 
         model.train()
         for _ in range(12):
-            optimizer.zero_grad()
             preds = model(x_tensor)
             loss = criterion(preds, y_tensor)
             loss.backward()
-            optimizer.step()
+            with torch.no_grad():
+                for p in model.parameters():
+                    if p.grad is not None:
+                        p.data -= 0.05 * p.grad
+                        p.grad.zero_()
         model.eval()
 
         # Persist to MODELS_DIR or TMP_MODELS_DIR if writable
