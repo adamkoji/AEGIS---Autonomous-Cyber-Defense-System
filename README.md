@@ -1,13 +1,3 @@
----
-title: AEGIS Cyber Defense API
-emoji: 🛡️
-colorFrom: blue
-colorTo: pink
-sdk: gradio
-app_file: app.py
-pinned: false
----
-
 <div align="center">
 
 # 🛡️ AEGIS
