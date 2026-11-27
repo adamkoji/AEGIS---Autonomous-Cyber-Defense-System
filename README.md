@@ -5,7 +5,7 @@
 
 *Real-Time Hybrid Ensemble Fusing a 111-Feature PyTorch Self-Attention Transformer, Calibrated LightGBM GBDT, Live BeautifulSoup4 DOM AST Scanner & OWASP LLM / MITRE ATT&CK Adversarial Prompt-Injection Guardrails*
 
-[![Live Web App (Vercel)](https://img.shields.io/badge/Live_Web_App-Vercel_Lunar_Oasis_UI-1E2238?style=for-the-badge&logo=vercel&logoColor=8DB9F0)](https://aegis-cyber-defense.vercel.app)
+[![Live Web App (Vercel)](https://img.shields.io/badge/Live_Web_App-Vercel_Lunar_Oasis_UI-1E2238?style=for-the-badge&logo=vercel&logoColor=8DB9F0)](https://aegis-autonomous-cyber-defense-syst.vercel.app)
 [![Live Inference Engine (HF Spaces)](https://img.shields.io/badge/Live_Inference_API-Hugging_Face_Spaces-F5B69E?style=for-the-badge&logo=huggingface&logoColor=1E2238)](https://divyansh153-aegis-api.hf.space/api/health)
 [![Verification Suite](https://img.shields.io/badge/PyTest_Suite-6%2F6_Passing-10B981?style=for-the-badge&logo=pytest&logoColor=white)](#8-quickstart-local-setup-automated-pytest-suite-docker--cloud-deployment)
 
